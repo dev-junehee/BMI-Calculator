@@ -18,17 +18,17 @@
 ## To-do
 ### 기능
 - [ ] 키와 몸무게 입력 받기
-    - [ ] 숫자 키패드 사용
-    - [ ] Int, Float, Double (정수와 실수)구분
+    - [x] 숫자 키패드 사용
+    - [x] Int, Float, Double (정수와 실수)구분
     - [ ] 몸무게 입력 시 입력값 안보이게 설정
 - [ ] 키보드 내리기
     - [x] 백그라운드 tap 했을 때
-    - [ ] 키보드 return 눌렀을 때
+    - [ ] ~~키보드 return 눌렀을 때~~ (→ 숫자 키패드로 변경)
 - [ ] BMI 계산하기
-    - [ ] BMI 계산 함수 생성
-    - [ ] 키와 몸무게 매개변수 받기
-    - [ ] 신장 단위 변경 (cm(센티미터) ➔ m(미터))
-    - [ ] 리턴값 Alert 연결
+    - [x] BMI 계산 함수 생성
+    - [x] 키와 몸무게 매개변수 받기
+    - [x] 신장 단위 변경 (cm(센티미터) → m(미터))
+    - [x] 리턴값 Alert 연결
 - [ ] 랜덤으로 BMI 계산하기
     - [ ] 임의의 데이터 셋 구성
     - [ ] 랜덤한 값으로 BMI 계산
@@ -45,7 +45,7 @@
     - [x] iphoone 15 Pro Max
 - [ ] TextField
     - [ ] highlight borderColor 변경
-    - [ ] left padding
+    - [x] 왼쪽 패딩 (UITextField.leftView, .leftViewMode 사용)
 - [ ] Alert
 
 <br />
@@ -76,5 +76,11 @@ Swift에서는 기본으로 카멜 케이스(camelCase)를 사용하고 카멜 �
 <summary>**AppDeleagate에서 Thread 1: signal SIGTERM error**</summary>
 여러 개의 시뮬레이터를 켜놓고 테스트 하던 중 시뮮레이터를 종료하니 AppDelegate에서 Thread 1 Error 발생
 Xcode에서 시뮬레이터를 종료할 때 Cmd + Q를 사용해야 한다고 한다. (iOS 13 이후부터 AppDelegate에서 앱의 생성과 종료 시점 통제)
+</div>
+</details>
+
+<details>
+<summary>**숫자 키패드 입력값 입력 후 userData에 할당되지 않는 이슈=**</summary>
+userHeight, userWeight 데이터를 받을 UITextField에서 키보드 내리기 기능을 추가하기 위해 이벤트를 Did End On Exit으로 설정 후 keyboardType을 decimalPad로 변경하니 입력값이 userHeight, userWeight 변수에 할당이 안 됨. 각 TextField의 IBAction 함수에 이벤트를 Editing Did End를 추가로 연결하여 해결.
 </div>
 </details>
