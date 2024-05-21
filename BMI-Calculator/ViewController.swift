@@ -32,7 +32,10 @@ class ViewController: UIViewController {
         "weight": "몸무게는 어떻게 되시나요?",
         "random": "랜덤으로 BMI 계산하기",
         "result": "결과 확인하기",
-        "alertTitle": "당신의 BMI 지수 결과입니다."
+        "alertTitle": "당신의 BMI 지수 결과입니다",
+        "alertErrorTitle": "올바른 숫자값을 입력해 주세요!",
+        "alertHeightError": "100 ~ 199(cm)",
+        "alertWeightError": "0 ~ 200(kg)"
     ]
     
     // User 입력값
@@ -43,8 +46,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         configureInitialUI()
-        
-        print(calculateBMI(height: 159.1, weight: 55.0))
     }
     
     // 메인화면 초기 UI 구성
@@ -105,48 +106,110 @@ class ViewController: UIViewController {
         return BMI
     }
     
+    // BMI 반올림 계산 함수
+    func roundBMI(BMI: Double) -> Double {
+        return round(BMI * 100) / 100
+    }
+    
+    // 입력값 유효성 검사
+    // height(키): 100~199
+    // weight(몸무게): 0~200
+    func validateUserData(data: Double, type: String) -> Bool {
+        print("유효성", data)
+        
+        if type == "height" {
+            return data > 200.0 || data < 100 ? false : true
+        } else if type == "weight" {
+            return data > 200 || data < 0 ? false : true
+        } else {
+            print("잘못된 접근입니다.")
+            return false
+        }
+    }
+    
     // 키 텍스트 필드 핸들러 - 입력값 받기, 키보드 내리기 (Did End On Exit)
     @IBAction func heightTextFieldClicked(_ sender: UITextField) {
         // 키 입력값(String)이 nil일 때 "0.0" 할당
-        // 키 입력값을 Double로 변환했을 때 nil이 아니라면 userHeight에 해당 값 할당
-        // nil이라면 0.0 할당
-        let heightStringValue = heightTextField.text ?? "0.0"
-        if let heightDoubleValue = Double(heightStringValue) {
-            userHeight = heightDoubleValue
+        // Double로 변환했을 때 nil이면 0.0 할당
+        let convertHeight = Double(heightTextField.text ?? "0.0") ?? 0.0
+        // 키 값이 유효한지 확인 (100~199 사이 값)
+        let flag = validateUserData(data: convertHeight, type: "height")
+        
+        // 유효성 검사 미통과 - Alert, 입력값 초기화
+        // 유효성 검사 통화 - userHeight 변수에 할당
+        if !flag {
+            let alert = UIAlertController(
+                title: messages["alertErrorTitle"],
+                message: messages["alertHeightError"],
+                preferredStyle: .alert)
+            
+            let open = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(open)
+            present(alert, animated: true)
+            
+            heightTextField.text = ""
+            return
         } else {
-            userHeight = 0.0
+            userHeight = convertHeight
         }
+        print("키에용", userHeight)
     }
     
     // 몸무게 텍스트 필드 핸들러 - 입력값 받기, 키보드 내리기 (Did End On Exit)
     @IBAction func weightTextFieldClicked(_ sender: UITextField) {
-        let weightStringValue = weightTextField.text ?? "0.0"
-        if let weightDoubleValue = Double(weightStringValue) {
-            userWeight = weightDoubleValue
+        let convertWeight = Double(weightTextField.text ?? "0.0") ?? 0.0
+        let flag = validateUserData(data: convertWeight, type: "weight")
+
+        if !flag {
+            let alert = UIAlertController(
+                title: messages["alertErrorTitle"],
+                message: messages["alertWeightError"],
+                preferredStyle: .alert)
+            
+            let open = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(open)
+            present(alert, animated: true)
+            
+            weightTextField.text = ""
+            return
         } else {
-            userWeight = 0.0
+            userWeight = convertWeight
         }
+        print("몸무게에용", userWeight)
     }
     
     // 결과 확인 버튼 핸들
     @IBAction func resultButtonClicked(_ sender: UIButton) {
-        var resultBMI = calculateBMI(height: userHeight, weight: userWeight)
+        // 유저 데이터 중 하나라도 0.0이면 Alert
+        if (userHeight == 0.0 || userWeight == 0.0) {
+            let alert = UIAlertController(
+                title: messages["alertErrorTitle"],
+                message: messages["alertWeightError"],
+                preferredStyle: .alert)
+            
+            let open = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(open)
+            present(alert, animated: true)
+            
+            heightTextField.text = ""
+            weightTextField.text = ""
+            return
+        }
         
+        let userBMI = calculateBMI(height: userHeight, weight: userWeight)
+        let roundBMI = roundBMI(BMI: userBMI)
         
-        // 1.바탕, 내용
         let alert = UIAlertController(
             title: messages["alertTitle"],
-            message: String(resultBMI),
+            message: String(roundBMI),
             preferredStyle: .alert)
         
-        // 2.버튼
         let open = UIAlertAction(title: "확인", style: .default)
-        
-        // 3.버튼합치기
         alert.addAction(open)
-        
-        // 4.화면에 띄우기
         present(alert, animated: true)
+        
+        heightTextField.text = ""
+        weightTextField.text = ""
     }
     
     // 키보드 내리기 (tap gesture)
