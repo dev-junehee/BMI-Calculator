@@ -84,8 +84,12 @@ class ViewController: UIViewController {
         resultButton.layer.cornerRadius = 20
         resultButton.backgroundColor = .purple
     }
-
+    
+    // 키보드 내리기 (tap gesture)
+    @IBAction func keyboardDismiss(_ sender: Any) {
+        view.endEditing(true)
+    }
         
-}
+} 
 
     

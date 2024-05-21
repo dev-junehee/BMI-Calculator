@@ -22,7 +22,7 @@
     - [ ] Int, Float, Double (정수와 실수)구분
     - [ ] 몸무게 입력 시 입력값 안보이게 설정
 - [ ] 키보드 내리기
-    - [ ] 백그라운드 tap 했을 때
+    - [x] 백그라운드 tap 했을 때
     - [ ] 키보드 return 눌렀을 때
 - [ ] BMI 계산하기
     - [ ] BMI 계산 함수 생성
@@ -60,11 +60,21 @@
 
 ## Question
 <details>
-<summary>Swift에서 상수 선언 시 상수명 명명법</summary>
+<summary>**Swift에서 상수 선언 시 상수명 명명법**</summary>
 <div markdown="1">
 JavaScript에서 상수(Constants) 데이터를 만들 때 객체를 활용해 선언하고, 상수명은 대문자 스네이크 케이스(e.g. TEXT_DATA)를 활용했었다.
-
+<br />
 Swift에서는 기본으로 카멜 케이스(camelCase)를 사용하고 카멜 케이스 안에서도 Lower Camel Case 와 Upper Camel Case로 나뉘어지는데, 상수 선언의 경우에는 Lower Camel Case를 사용한다고 한다. 따라서 앱에서 사용할 문자열을 딕셔너리(Dictionary)를 활용해 상수를 선언하고, 상수명은 Lower Camel Case 규칙을 적용해주었다.
 
+</div>
+</details>
+
+<br />
+
+## Trouble Shooting
+<details>
+<summary>**AppDeleagate에서 Thread 1: signal SIGTERM error**</summary>
+여러 개의 시뮬레이터를 켜놓고 테스트 하던 중 시뮮레이터를 종료하니 AppDelegate에서 Thread 1 Error 발생
+Xcode에서 시뮬레이터를 종료할 때 Cmd + Q를 사용해야 한다고 한다. (iOS 13 이후부터 AppDelegate에서 앱의 생성과 종료 시점 통제)
 </div>
 </details>
