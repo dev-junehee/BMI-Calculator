@@ -1,7 +1,7 @@
 # BMI-Calculator
 
-> **BMI 계산법**
-> 신체질량지수(BMI) = $체중(kg) / (신장(m)^2$
+> **BMI 계산법**<br />
+> 신체질량지수(BMI) = $체중(kg) / (신장(m))^2$
 
 <br />
 
@@ -37,8 +37,8 @@
     - [ ] iPhone SE
     - [ ] iPhone 13 mini
     - [ ] iPhone 15
-    - [ ] iPhone 15 pro
-    - [ ]
+    - [ ] iPhone 15 Pro
+    - [ ] iphoone 15 Pro Max
 - [ ] Alert
 
 <br />
