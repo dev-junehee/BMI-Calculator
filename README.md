@@ -28,7 +28,8 @@
     - [x] BMI 계산 함수 생성
     - [x] 키와 몸무게 매개변수 받기
     - [x] 신장 단위 변경 (cm(센티미터) → m(미터))
-    - [x] 리턴값 Alert 연결
+    - [x] BMI 결과 Alert 연결
+    - [ ] BMI 결과 소숫점 반올림
 - [ ] 랜덤으로 BMI 계산하기
     - [ ] 임의의 데이터 셋 구성
     - [ ] 랜덤한 값으로 BMI 계산
@@ -60,11 +61,9 @@
 
 ## Question
 <details>
-<summary>**Swift에서 상수 선언 시 상수명 명명법**</summary>
+<summary>Swift에서 상수 선언 시 상수명 명명법</summary>
 <div markdown="1">
-JavaScript에서 상수(Constants) 데이터를 만들 때 객체를 활용해 선언하고, 상수명은 대문자 스네이크 케이스(e.g. TEXT_DATA)를 활용했었다.
-<br />
-Swift에서는 기본으로 카멜 케이스(camelCase)를 사용하고 카멜 케이스 안에서도 Lower Camel Case 와 Upper Camel Case로 나뉘어지는데, 상수 선언의 경우에는 Lower Camel Case를 사용한다고 한다. 따라서 앱에서 사용할 문자열을 딕셔너리(Dictionary)를 활용해 상수를 선언하고, 상수명은 Lower Camel Case 규칙을 적용해주었다.
+JavaScript에서 상수(Constants) 데이터를 만들 때 객체를 활용해 선언하고, 상수명은 대문자 스네이크 케이스(e.g. TEXT_DATA)를 활용했었다. Swift에서는 기본으로 카멜 케이스(camelCase)를 사용하고 카멜 케이스 안에서도 Lower Camel Case 와 Upper Camel Case로 나뉘어지는데, 상수 선언의 경우에는 Lower Camel Case를 사용한다고 한다. 따라서 앱에서 사용할 문자열을 딕셔너리(Dictionary)를 활용해 상수를 선언하고, 상수명은 Lower Camel Case 규칙을 적용해주었다.
 
 </div>
 </details>
@@ -73,14 +72,14 @@ Swift에서는 기본으로 카멜 케이스(camelCase)를 사용하고 카멜 �
 
 ## Trouble Shooting
 <details>
-<summary>**AppDeleagate에서 Thread 1: signal SIGTERM error**</summary>
+<summary>AppDeleagate에서 Thread 1: signal SIGTERM error</summary>
 여러 개의 시뮬레이터를 켜놓고 테스트 하던 중 시뮮레이터를 종료하니 AppDelegate에서 Thread 1 Error 발생
 Xcode에서 시뮬레이터를 종료할 때 Cmd + Q를 사용해야 한다고 한다. (iOS 13 이후부터 AppDelegate에서 앱의 생성과 종료 시점 통제)
 </div>
 </details>
 
 <details>
-<summary>**숫자 키패드 입력값 입력 후 userData에 할당되지 않는 이슈=**</summary>
+<summary>숫자 키패드 입력값 입력 후 userData에 할당되지 않는 이슈</summary>
 userHeight, userWeight 데이터를 받을 UITextField에서 키보드 내리기 기능을 추가하기 위해 이벤트를 Did End On Exit으로 설정 후 keyboardType을 decimalPad로 변경하니 입력값이 userHeight, userWeight 변수에 할당이 안 됨. 각 TextField의 IBAction 함수에 이벤트를 Editing Did End를 추가로 연결하여 해결.
 </div>
 </details>
