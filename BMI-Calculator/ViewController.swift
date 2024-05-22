@@ -48,42 +48,53 @@ class ViewController: UIViewController {
         configureInitialUI()
     }
     
+    // 레이블 UI 디자인 함수
+    func designLabel(_ label: UILabel, text: String?, size: Int, weight: UIFont.Weight, align: NSTextAlignment) {
+        label.text = text
+        label.textAlignment = align
+        label.font = .systemFont(ofSize: CGFloat(size), weight: weight)
+        label.backgroundColor = .clear
+        label.numberOfLines = 0
+    }
+    
+    // 텍스트 필드 UI 디자인 함수
+    func designTextField(_ textField: UITextField ) {
+        textField.borderStyle = .none  // 기본 스타일 제거
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.cornerRadius = 20
+    }
+    
+    // 이미지뷰 UI 디자인 함수
+    func designImageView(_ imageView: UIImageView, image: String, bgColor: UIColor, contentMode: UIImageView.ContentMode) {
+        imageView.image = UIImage(named: image)
+        imageView.backgroundColor = bgColor
+        imageView.contentMode = contentMode
+    }
+    
     // 메인화면 초기 UI 구성
     // ( 추후 별도 함수로 분리하기!!!!!! )
     func configureInitialUI() {
-        titleLabel.text = messages["title"]
-        titleLabel.backgroundColor = .clear
-        titleLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        // 타이틀, 서브타이틀
+        designLabel(titleLabel, text: messages["title"], size: 26, weight: .bold, align: .left)
+        designLabel(subTitleLabel, text: messages["subTitle"], size: 16, weight: .medium, align: .left)
         
-        subTitleLabel.text = messages["subTitle"]
-        subTitleLabel.numberOfLines = 0
-        subTitleLabel.backgroundColor = .clear
-        subTitleLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        // 메인 이미지
+        designImageView(mainImage, image: "image", bgColor: .clear, contentMode: .scaleAspectFit)
         
-        mainImage.image = UIImage(named: "image")
-        mainImage.backgroundColor = .clear
-        mainImage.contentMode = .scaleAspectFit
+        // 키, 몸무게TextField
+        designLabel(heightLabel, text: messages["height"], size: 14, weight: .light, align: .left)
+        designTextField(heightTextField)
         
-        heightLabel.text = messages["height"]
-        heightLabel.textAlignment = .left
-        heightLabel.font = .systemFont(ofSize: 14, weight: .light)
+        designLabel(weightLabel, text: messages["weight"], size: 14, weight: .light, align: .left)
+        designTextField(weightTextField)
         
-        heightTextField.layer.borderWidth = 1
-        heightTextField.borderStyle = .none
-        heightTextField.layer.borderColor = UIColor.gray.cgColor
-        heightTextField.layer.cornerRadius = 20
         heightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0)) // 텍스트 필드 왼쪽 여백 넣기
         heightTextField.leftViewMode = .always
         heightTextField.keyboardType = .decimalPad // 숫자 키패드
 
-        weightLabel.text = messages["weight"]
-        weightLabel.textAlignment = .left
-        weightLabel.font = .systemFont(ofSize: 14, weight: .light)
         
-        weightTextField.layer.borderWidth = 1
-        weightTextField.borderStyle = .none
-        weightTextField.layer.borderColor = UIColor.gray.cgColor
-        weightTextField.layer.cornerRadius = 20
+        
         weightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0)) // 텍스트 필드 왼쪽 여백 넣기
         weightTextField.leftViewMode = .always
         weightTextField.keyboardType = .decimalPad // 숫자 키패드
