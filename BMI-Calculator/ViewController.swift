@@ -50,10 +50,23 @@ class ViewController: UIViewController {
         configureInitialUI()
         
         // UserDefaults 저장값 불러오기
-        let height = UserDefaults.standard.string(forKey: "height")
-        let weight = UserDefaults.standard.string(forKey: "weight")
-        heightTextField.text = height
-        weightTextField.text = weight
+        let height = UserDefaults.standard.double(forKey: "height")
+        let weight = UserDefaults.standard.double(forKey: "weight")
+
+        // 값이 0.0이면 텍스트 필드에 노출X
+        if height != 0.0 {
+            heightTextField.text = String(height)
+        } else {
+            heightTextField.text = ""
+        }
+        if weight != 0.0 {
+            weightTextField.text = String(weight)
+        } else {
+            weightTextField.text = ""
+        }
+        
+        userHeight = height
+        userWeight = weight
     }
     
     // 레이블 UI 디자인 함수
@@ -257,6 +270,8 @@ class ViewController: UIViewController {
         
         heightTextField.text = ""
         weightTextField.text = ""
+        
+        viewDidLoad()
     }
     
     // 리셋 버튼 핸들러
