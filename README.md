@@ -66,11 +66,11 @@
 
 | **런치 스크린** | **메인 화면** | **메인 화면<br />(UserDefaults 있을 때)** |
 |:--------:|:-------:|:-----:|
-| | <img width="40" alt="메인화면" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/e6c53e1b-3527-497a-92d7-92f820854a7f">
+| | <img width="400" alt="메인화면" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/e6c53e1b-3527-497a-92d7-92f820854a7f">
  | |
  | **Alert**<br />(키가 범위를 벗어났을 때) | **Alert**<br />(몸무게가 범위를 벗어났을 때) | **Alert**<br />(랜덤 버튼 클릭했을 때) |
- | <img width="507" alt="Alert-height" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/c7ca9e1a-b9e7-47d3-9508-561f44c71c65">
- | | |
+ | <img width="400" alt="Alert-height" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/c7ca9e1a-b9e7-47d3-9508-561f44c71c65">
+ | <img width="400" alt="Alert-weight" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/a3b92cec-bdff-4827-80a0-66e80873b495"> | |
 
 <br />
 
@@ -87,20 +87,20 @@ JavaScript에서 상수(Constants) 데이터를 만들 때 객체를 활용해 �
 
 ## Trouble Shooting
 <details>
-<summary>AppDeleagate에서 Thread 1: signal SIGTERM error</summary>
-여러 개의 시뮬레이터를 켜놓고 테스트 하던 중 시뮮레이터를 종료하니 AppDelegate에서 Thread 1 Error 발생
+<summary><b>AppDeleagate에서 Thread 1: signal SIGTERM error</b></summary>
+여러 개의 시뮬레이터를 켜놓고 테스트 하던 중 시뮬레이터를 종료하니 AppDelegate에서 Thread 1 Error 발생
 Xcode에서 시뮬레이터를 종료할 때 Cmd + Q를 사용해야 한다고 한다. (iOS 13 이후부터 AppDelegate에서 앱의 생성과 종료 시점 통제)
 </div>
 </details>
 
 <details>
-<summary>숫자 키패드 입력값 입력 후 userData에 할당되지 않는 이슈</summary>
+<summary><b>숫자 키패드 입력값 입력 후 userData에 할당되지 않는 이슈</b></summary>
 userHeight, userWeight 데이터를 받을 UITextField에서 키보드 내리기 기능을 추가하기 위해 이벤트를 Did End On Exit으로 설정 후 keyboardType을 decimalPad로 변경하니 입력값이 userHeight, userWeight 변수에 할당이 안 됨. 각 TextField의 IBAction 함수에 이벤트를 Editing Did End를 추가로 연결하여 해결.
 </div>
 </details>
 
 <details>
-<summary>텍스트 필드에 UserDefaults에 저장된 값을 할당했을 때 BMI 계산 안 되는 이슈</summary>
+<summary><b>텍스트 필드에 UserDefaults에 저장된 값을 할당했을 때 BMI 계산 안 되는 이슈</b></summary>
 BMI를 계산하는 함수는 userHeight, userWeight 값으로 계산을 하는데, UserDefaults에 저장된 값을 텍스트 필드의 text에만 할당하고, userHeight와 userWeight에는 할당하지 않아 BMI 계산이 안 되는 문제 발생. viewDidLoad()에서 초기 화면 로드 시 UserDefault에 저장된 값이 기본 값(0.0)이 아닐 경우에는 텍스트 필드에 노출하고, 0.0일 경우에는 빈 문자열을 넣어주어 해결.
 </div>
 </details>
