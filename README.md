@@ -64,9 +64,13 @@
 
 ## 화면 구성
 
-| **런치 스크린** | **메인 화면** | **Alert** |
+| **런치 스크린** | **메인 화면** | **메인 화면<br />(UserDefaults 있을 때)** |
 |:--------:|:-------:|:-----:|
-| | |
+| | <img width="40" alt="메인화면" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/e6c53e1b-3527-497a-92d7-92f820854a7f">
+ | |
+ | **Alert**<br />(키가 범위를 벗어났을 때) | **Alert**<br />(몸무게가 범위를 벗어났을 때) | **Alert**<br />(랜덤 버튼 클릭했을 때) |
+ | <img width="507" alt="Alert-height" src="https://github.com/dev-junehee/BMI-Calculator/assets/116873887/c7ca9e1a-b9e7-47d3-9508-561f44c71c65">
+ | | |
 
 <br />
 
