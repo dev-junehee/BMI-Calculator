@@ -54,8 +54,8 @@
 
 ## Refactoring
 #### 24-05-22 (Wed)
-- [ ] 반복되는 코드 함수화
-- [ ] UserDefaults 사용한 사용자 데이터 영구 저장
+- [x] 반복되는 코드 함수화
+- [x] UserDefaults 사용한 사용자 데이터 영구 저장
 
 <br />
 

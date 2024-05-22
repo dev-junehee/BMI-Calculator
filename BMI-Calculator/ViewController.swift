@@ -45,7 +45,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 기본 UI 구성
         configureInitialUI()
+        
+        // UserDefaults 저장값 불러오기
+        let height = UserDefaults.standard.string(forKey: "height")
+        let weight = UserDefaults.standard.string(forKey: "weight")
+        heightTextField.text = height
+        weightTextField.text = weight
     }
     
     // 레이블 UI 디자인 함수
@@ -240,6 +247,10 @@ class ViewController: UIViewController {
         let open = UIAlertAction(title: "확인", style: .default)
         alert.addAction(open)
         present(alert, animated: true)
+        
+        print("here", heightTextField.text, weightTextField.text)
+        UserDefaults.standard.set(heightTextField.text, forKey: "height")
+        UserDefaults.standard.set(weightTextField.text, forKey: "weight")
         
         heightTextField.text = ""
         weightTextField.text = ""
