@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var randomButton: UIButton!
     @IBOutlet var resultButton: UIButton!
+    @IBOutlet var resetButton: UIButton!
     
     // 문자열 상수 데이터
     let messages: [String: String] = [
@@ -116,6 +117,9 @@ class ViewController: UIViewController {
         
         // 결과 확인 버튼
         designButton(resultButton, title: messages["result"], titleColor: .white, titleSize: 18, titleWeight: .bold, radius: 20, bgColor: .purple)
+        
+        // 리셋 버튼
+        designButton(resetButton, title: "초기화", titleColor: .gray, titleSize: 14, titleWeight: .bold, radius: 0, bgColor: .clear)
     }
     
     // BMI 계산 함수
@@ -218,7 +222,7 @@ class ViewController: UIViewController {
         weightTextField.text = ""
     }
     
-    // 결과 확인 버튼 핸들
+    // 결과 확인 버튼 핸들러
     @IBAction func resultButtonClicked(_ sender: UIButton) {
         // 유저 데이터 중 하나라도 0.0이면 Alert
         if (userHeight == 0.0 || userWeight == 0.0) {
@@ -248,12 +252,18 @@ class ViewController: UIViewController {
         alert.addAction(open)
         present(alert, animated: true)
         
-        print("here", heightTextField.text, weightTextField.text)
         UserDefaults.standard.set(heightTextField.text, forKey: "height")
         UserDefaults.standard.set(weightTextField.text, forKey: "weight")
         
         heightTextField.text = ""
         weightTextField.text = ""
+    }
+    
+    // 리셋 버튼 핸들러
+    @IBAction func resetButtonClicked(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "height")
+        UserDefaults.standard.removeObject(forKey: "weight")
+        viewDidLoad()
     }
     
     // 키보드 내리기 (tap gesture)

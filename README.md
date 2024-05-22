@@ -22,6 +22,9 @@
     - [x] 숫자 키패드 사용
     - [x] Int, Float, Double(정수와 실수) 구분
     - [ ] 몸무게 입력 시 입력값 안보이게 설정
+    - [x] UserDefaults에 데이터 저장
+    - [x] 기존 데이터 기록이 남아있으면 TextField에 기본 노출
+    - [x] 초기화 버튼 클릭 시 UserDefaults 데이터 삭제
 - [x] 키보드 내리기
     - [x] 백그라운드 tap 했을 때
     - [ ] ~~키보드 return 눌렀을 때~~ (→ 숫자 키패드로 변경)
@@ -55,7 +58,7 @@
 ## Refactoring
 #### 24-05-22 (Wed)
 - [x] 반복되는 코드 함수화
-- [x] UserDefaults 사용한 사용자 데이터 영구 저장
+- [x] UserDefaults 사용한 사용자 데이터 영구 저장/삭제
 
 <br />
 

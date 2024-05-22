@@ -94,6 +94,14 @@
                                     <action selector="resultButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mna-TN-igh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvL-FA-avr">
+                                <rect key="frame" x="327" y="669.66666666666663" width="46" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="resetButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhu-Ir-pYo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,6 +115,8 @@
                             <constraint firstItem="M2f-gB-uDG" firstAttribute="top" secondItem="kXa-xw-1CK" secondAttribute="bottom" constant="10" id="H04-1k-7D4"/>
                             <constraint firstItem="IGd-9l-du2" firstAttribute="top" secondItem="M2f-gB-uDG" secondAttribute="bottom" constant="20" id="HdK-me-jH9"/>
                             <constraint firstItem="rWc-vv-blo" firstAttribute="top" secondItem="S05-T9-i9b" secondAttribute="bottom" constant="8" id="Ky6-3o-RZK"/>
+                            <constraint firstItem="EvL-FA-avr" firstAttribute="top" secondItem="IGd-9l-du2" secondAttribute="bottom" constant="10" id="Mba-qC-FUu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EvL-FA-avr" secondAttribute="trailing" constant="20" id="OFe-Lj-5fV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kXa-xw-1CK" secondAttribute="trailing" constant="20" id="Oj1-uK-rlc"/>
                             <constraint firstItem="WIh-O4-mg1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Plw-g6-dPi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M2f-gB-uDG" secondAttribute="trailing" constant="20" id="QSx-UT-97u"/>
@@ -133,6 +143,7 @@
                         <outlet property="heightTextField" destination="rWc-vv-blo" id="6z0-jE-QJf"/>
                         <outlet property="mainImage" destination="WAi-Co-Bsl" id="eHS-69-2Kl"/>
                         <outlet property="randomButton" destination="M2f-gB-uDG" id="iF8-jy-gPk"/>
+                        <outlet property="resetButton" destination="EvL-FA-avr" id="CrZ-DJ-rKk"/>
                         <outlet property="resultButton" destination="IGd-9l-du2" id="26P-N2-ZMh"/>
                         <outlet property="subTitleLabel" destination="wYm-Dm-jwM" id="t1d-ku-MKv"/>
                         <outlet property="titleLabel" destination="U8H-Fb-fcC" id="9Yk-gL-Uha"/>
@@ -147,7 +158,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="13.953488372093023" y="3.218884120171674"/>
+            <point key="canvasLocation" x="12.977099236641221" y="2.8169014084507045"/>
         </scene>
     </scenes>
     <resources>
