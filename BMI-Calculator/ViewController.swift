@@ -58,11 +58,12 @@ class ViewController: UIViewController {
     }
     
     // 텍스트 필드 UI 디자인 함수
-    func designTextField(_ textField: UITextField ) {
+    func designTextField(_ textField: UITextField, keyboardType: UIKeyboardType) {
         textField.borderStyle = .none  // 기본 스타일 제거
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.cornerRadius = 20
+        textField.keyboardType = keyboardType
     }
     
     // 이미지뷰 UI 디자인 함수
@@ -70,6 +71,15 @@ class ViewController: UIViewController {
         imageView.image = UIImage(named: image)
         imageView.backgroundColor = bgColor
         imageView.contentMode = contentMode
+    }
+    
+    // 버튼 UI 디자인 함수
+    func designButton(_ button: UIButton, title: String?, titleColor: UIColor, titleSize: Int, titleWeight: UIFont.Weight, radius: Int, bgColor: UIColor) {
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(titleColor, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: CGFloat(titleSize), weight: titleWeight)
+        button.layer.cornerRadius = CGFloat(radius)
+        button.backgroundColor = bgColor
     }
     
     // 메인화면 초기 UI 구성
@@ -84,30 +94,23 @@ class ViewController: UIViewController {
         
         // 키, 몸무게TextField
         designLabel(heightLabel, text: messages["height"], size: 14, weight: .light, align: .left)
-        designTextField(heightTextField)
+        designTextField(heightTextField, keyboardType: .decimalPad)
         
         designLabel(weightLabel, text: messages["weight"], size: 14, weight: .light, align: .left)
-        designTextField(weightTextField)
+        designTextField(weightTextField, keyboardType: .decimalPad)
         
-        heightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0)) // 텍스트 필드 왼쪽 여백 넣기
+        
+        // 텍스트 필드 왼쪽 여백 넣기
+        heightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0))
         heightTextField.leftViewMode = .always
-        heightTextField.keyboardType = .decimalPad // 숫자 키패드
-
-        
-        
-        weightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0)) // 텍스트 필드 왼쪽 여백 넣기
+        weightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0))
         weightTextField.leftViewMode = .always
-        weightTextField.keyboardType = .decimalPad // 숫자 키패드
         
-        randomButton.setTitle(messages["random"], for: .normal)
-        randomButton.setTitleColor(.purple, for: .normal)
-        randomButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        // 랜덤 버튼
+        designButton(randomButton, title: messages["random"], titleColor: .purple, titleSize: 14, titleWeight: .bold, radius: 0, bgColor: .clear)
         
-        resultButton.setTitle(messages["result"], for: .normal)
-        resultButton.setTitleColor(.white, for: .normal)
-        resultButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        resultButton.layer.cornerRadius = 20
-        resultButton.backgroundColor = .purple
+        // 결과 확인 버튼
+        designButton(resultButton, title: messages["result"], titleColor: .white, titleSize: 18, titleWeight: .bold, radius: 20, bgColor: .purple)
     }
     
     // BMI 계산 함수
