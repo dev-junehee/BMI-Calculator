@@ -11,7 +11,8 @@
 - UIAlertController, Alert, Actionsheet
     - style: default, destructive, cancel
 - 함수의 반환 값, @discardableResult
-- Optional chaining, Optional Binding
+- Optional Chaining, Optional Binding
+- UserDefaults
 
 <br />
 
@@ -48,6 +49,13 @@
     - [ ] highlight borderColor 변경
     - [x] 왼쪽 패딩 (UITextField.leftView, .leftViewMode 사용)
 - [x] Alert
+
+<br />
+
+## Refactoring
+#### 24-05-22 (Wed)
+- [ ] 반복되는 코드 함수화
+- [ ] UserDefaults 사용한 사용자 데이터 영구 저장
 
 <br />
 

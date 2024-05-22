@@ -83,7 +83,6 @@ class ViewController: UIViewController {
     }
     
     // 메인화면 초기 UI 구성
-    // ( 추후 별도 함수로 분리하기!!!!!! )
     func configureInitialUI() {
         // 타이틀, 서브타이틀
         designLabel(titleLabel, text: messages["title"], size: 26, weight: .bold, align: .left)
@@ -92,13 +91,12 @@ class ViewController: UIViewController {
         // 메인 이미지
         designImageView(mainImage, image: "image", bgColor: .clear, contentMode: .scaleAspectFit)
         
-        // 키, 몸무게TextField
+        // 키, 몸무게 텍스트 필드
         designLabel(heightLabel, text: messages["height"], size: 14, weight: .light, align: .left)
         designTextField(heightTextField, keyboardType: .decimalPad)
         
         designLabel(weightLabel, text: messages["weight"], size: 14, weight: .light, align: .left)
         designTextField(weightTextField, keyboardType: .decimalPad)
-        
         
         // 텍스트 필드 왼쪽 여백 넣기
         heightTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 0.0))
